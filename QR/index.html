@@ -1,12 +1,32 @@
+<!--  
+This HTML code represents a webpage that utilizes JavaScript to retrieve the user's geolocation and 
+then calls a Google Apps Script function(written by us!) to save the coordinates and generate a map link.
+-->
+
+
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- 
+      Contains metadata and links to external resources.
+      <base target="_top">:  Specifies the default target for all hyperlinks and forms
+      to be the top-level browsing context. 
+      This is commonly used in Google Apps Script web apps
+      to ensure that links open in the same window or frame.
+     -->
     <base target="_top">
   </head>
+
+  <!-- 
+    The <body> element contains the content of the webpage. The onload attribute specifies a 
+    JavaScript function to be executed when the page loads. In this case, it calls the geoFindMe() 
+    function when the page loads.
+   -->
   <body onload="geoFindMe()">
     
     
     <script>
+      //This JavaScript function attempts to retrieve the user's geolocation using the Geolocation API.
       function geoFindMe() {
 
        
@@ -14,35 +34,42 @@
         var mapLink="";
        
       
-       if(navigator.geolocation){
+        if(navigator.geolocation){
+        // Checks if the Geolocation API is supported by the user's browser.
        
       
-           navigator.geolocation.getCurrentPosition(showPosition);
+          // If supported, it calls the getCurrentPosition() method to retrieve the user's current position. 
+          //This method takes a callback function showPosition as an argument.
+          navigator.geolocation.getCurrentPosition(showPosition);
           
-           function showPosition(position){
+          // This is the callback function that handles the retrieved position data.
+          function showPosition(position){
            
+          //Extracts the latitude from the position object.
+          const latitude=position.coords.latitude;
+          
+          //Extracts the longitude coordinates from the position object.
+          const  longitude=position.coords.longitude;
+          
+          // Constructs a map link using the retrieved latitude and longitude coordinates.
+          mapLink = 'https://www.openstreetmap.org/?mlat=' + latitude + '&mlon='+longitude+'#map=18/' + ${latitude}\/${longitude};
            
-            const latitude=position.coords.latitude;
-            const  longitude=position.coords.longitude;
-            mapLink = 'https://www.openstreetmap.org/?mlat=' + latitude + '&mlon='+longitude+'#map=18/' + ${latitude}\/${longitude};
-           
-            
-            google.script.run.saveCoordinates(latitude,longitude, mapLink);
-           }
+          // Calls a Google Apps Script function saveCoordinates and passes the latitude, longitude, 
+          //and map link as arguments. This function presumably saves this data to a Google Sheet using 
+          //Google Apps Script's capabilities.
+          google.script.run.saveCoordinates(latitude,longitude, mapLink);
+        }
     
          
         
-        }
+      }
         
     
-      }
-      
-      
-
+    }
      
     </script>
-    
+    <!-- A simple HTML paragraph element indicating that the form has been submitted successfully. -->
     <p>Form Submitted Successfully</p>
     
   </body>
-</html>
+</html> 
