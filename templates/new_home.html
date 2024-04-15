@@ -44,8 +44,8 @@
 	<!-- navbar starts -->
 	<nav>
         <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen'></i>
-            <span class="logo navLogo"><a href="#">Attendance System</a></span>
+            <!-- <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Attendance System</a></span> -->
 
             <div class="menu">
                 <div class="logo-toggle">
@@ -54,11 +54,12 @@
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('new_home') }}">Home</a></li>
-                    <li><a href="#">How it Works</a></li>
-                    <li><a href="{{ url_for('attendance') }}">Take Attendance</a></li>
-                    <li><a href="{{ url_for('newuser') }}">Add New User</a></li>
-                    <li><a href="#">Scan QR</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/how_it_works_page">How it Works</a></li>
+                    <li><a href="/attendance_page">Take Attendance</a></li>
+                    <li><a href="/newuser_page">Add New User</a></li>
+                    <li><a href="/qr_page">Scan QR</a></li>
+					<li><a href="/check_percentage">Check Attendance</a></li>
                 </ul>
             </div>
 		</div>
@@ -70,7 +71,7 @@
 	<div class="ag-format-container">
 		<div class="ag-courses_box">
 			<div class="ag-courses_item">
-				<a href="{{ url_for('newuser') }}" class="ag-courses-item_link">
+				<a href="/newuser_page" class="ag-courses-item_link">
 					<!-- <div class="ag-courses-item_bg"></div> -->
 
 					<div class="ag-courses-item_title">
@@ -84,10 +85,10 @@
 						</span>
 					</div>
 				</a>
-			</div>
+			</div>	
 
 			<div class="ag-courses_item">
-				<a href="{{ url_for('attendance') }}" class="ag-courses-item_link">
+				<a href="/attendance_page" class="ag-courses-item_link">
 					<!-- <div class="ag-courses-item_bg"></div> -->
 
 					<div class="ag-courses-item_title">
@@ -104,7 +105,7 @@
 			</div>
 
 			<div class="ag-courses_item">
-				<a href="{{ url_for('newuser') }}" class="ag-courses-item_link">
+				<a href="/qr_page" class="ag-courses-item_link">
 					<!-- <div class="ag-courses-item_bg"></div> -->
 
 					<div class="ag-courses-item_title">

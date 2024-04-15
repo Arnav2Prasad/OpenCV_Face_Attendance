@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --content-width: calc(40vw - 84px);
+            --margin: 20px;
+            --spacing: 20px;
+            --bdrs: 6px;
+            --circle-size: 100px;
+            --icon-size: 32px;
+            --bdrs-icon: 100%;
+            --color1: #9251ac;
+            --color2: #9251ac;
+            --color3: #9251ac;
+            --color4: #9251ac;
+            --color5: #9251ac;
+            --color6: #9251ac;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            background: #f6f9fc;
+            font-family: "Open Sans", sans-serif;
+            color: #525f7f;
+        }
+
+        h2 {
+            margin-top: 5.5%;
+            text-align: center;
+            font-size: 5rem;
+            font-weight: 100;
+            color: black;
+        }
+
+        h1 {
+            margin: 3%;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 10;
+            top: 0;
+            color: black;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            margin: var(--margin) auto;
+            position: relative;
+        }
+
+        .timeline__event {
+            margin-bottom: var(--spacing);
+            position: relative;
+            display: flex;
+            margin: var(--spacing) 0;
+            border-radius: var(--bdrs);
+            align-self: center;
+            width: 50vw;
+        }
+
+        .timeline__event:nth-child(2n + 1) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__date {
+            border-radius: 0 var(--bdrs) var(--bdrs) 0;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__content {
+            border-radius: var(--bdrs) 0 0 var(--bdrs);
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon:before {
+            content: "";
+            width: 5px;
+            height: 100%;
+            background: var(--color2);
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            right: auto;
+            z-index: -1;
+            transform: translateX(-50%);
+            animation: fillTop 0.5s forwards 0.5s ease-in-out;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon:after {
+            content: "";
+            width: 100%;
+            height: 5px;
+            background: var(--color2);
+            position: absolute;
+            right: 0;
+            z-index: -1;
+            top: 50%;
+            left: auto;
+            transform: translateY(-50%);
+            animation: fillLeft 0.5s forwards 0.5s ease-in-out;
+        }
+
+        .timeline__event__title {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--color1);
+            letter-spacing: 1.5px;
+        }
+
+        .timeline__event__content {
+            padding: var(--spacing);
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+            background: #fff;
+            width: var(--content-width);
+            border-radius: 0 var(--bdrs) var(--bdrs) 0;
+        }
+
+        .timeline__event__date {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--color1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            padding: 0 var(--spacing);
+            border-radius: var(--bdrs) 0 0 var(--bdrs);
+        }
+
+        .timeline__event__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color1);
+            padding: var(--spacing);
+            align-self: center;
+            margin: 0 var(--spacing);
+            background: var(--color2);
+            border-radius: var(--bdrs-icon);
+            width: var(--circle-size);
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+            height: var(--circle-size);
+            position: relative;
+        }
+
+        .timeline__event__icon i {
+            font-size: var(--icon-size);
+        }
+
+        .timeline__event__icon:before {
+            content: "";
+            width: 5px;
+            height: 100%;
+            background: var(--color2);
+            position: absolute;
+            top: 0%;
+            z-index: -1;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fillTop 0.5s forwards 0.5s ease-in-out;
+        }
+
+        .timeline__event__icon:after {
+            content: "";
+            width: 100%;
+            height: 5px;
+            background: var(--color2);
+            position: absolute;
+            left: 0%;
+            z-index: -1;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: fillLeftOdd 0.5s forwards 0.5s ease-in-out;
+        }
+
+        .timeline__event__description {
+            flex-basis: 100%;
+        }
+
+        .timeline__event--type2:after,
+        .timeline__event--type3:after {
+            background: var(--color4);
+        }
+
+        .timeline__event--type2 .timeline__event__date,
+        .timeline__event--type3 .timeline__event__date {
+            background: var(--color4);
+        }
+
+        .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:before,
+        .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:after,
+        .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:before,
+        .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:after {
+            background: var(--color3);
+        }
+
+        .timeline__event--type2 .timeline__event__icon,
+        .timeline__event--type3 .timeline__event__icon {
+            background: var(--color3);
+            color: var(--color4);
+        }
+
+        .timeline__event--type2 .timeline__event__title,
+        .timeline__event--type3 .timeline__event__title {
+            color: var(--color4);
+        }
+
+        @media (max-width: 786px) {
+            .timeline__event {
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .timeline__event__content {
+                width: 100%;
+            }
+
+            .timeline__event__icon {
+                border-radius: var(--bdrs) var(--bdrs) 0 0;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .timeline__event__icon:before,
+            .timeline__event__icon:after {
+                display: none;
+            }
+
+            .timeline__event__date {
+                border-radius: 0;
+                padding: var(--spacing);
+            }
+
+            .timeline__event:nth-child(2n + 1) {
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .timeline__event:nth-child(2n + 1) .timeline__event__date {
+                border-radius: 0;
+                padding: var(--spacing);
+            }
+
+            .timeline__event:nth-child(2n + 1) .timeline__event__icon {
+                border-radius: var(--bdrs) var(--bdrs) 0 0;
+                margin: 0;
+            }
+        }
+
+        @keyframes fillLeft {
+            100% {
+                right: 100%;
+            }
+        }
+
+        @keyframes fillTop {
+            100% {
+                top: 100%;
+            }
+        }
+
+        @keyframes fillLeftOdd {
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/nav.css') }}">
+</head>
+
+<body>
+    <div id="my-background"
+		style="height: 350vh; width: 100vw; z-index: -99; position: absolute; filter: opacity(0.9);"></div>
+
+    <nav>
+        <div class="nav-bar">
+            <!-- <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Attendance System</a></span> -->
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">Attendance System</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/how_it_works_page">How it Works</a></li>
+                    <li><a href="/attendance_page">Take Attendance</a></li>
+                    <li><a href="/newuser_page">Add New User</a></li>
+                    <li><a href="/qr_page">Scan QR</a></li>
+					<li><a href="/check_percentage">Check Attendance</a></li>
+                </ul>
+            </div>
+		</div>
+    </nav>
+    <div class="outer_container">
+        <script src="https://kit.fontawesome.com/fc596df623.js" crossorigin="anonymous"></script>
+
+        <h2>How it Works?</h2>
+        <h1>A stepwise guide to our project</h1>
+
+        <div class="timeline">
+
+            <!--first-->
+            <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+                <div class="timeline__event__icon ">
+                    <!-- <i class="lni-sport"></i>-->
+
+                </div>
+                <div class="timeline__event__date">
+                    Step : 1
+                </div>
+                <div class="timeline__event__content ">
+                    <div class="timeline__event__title">
+                        Fill in your Details
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>Fill in your details (Name and MIS) through the form provided in the 'Add new user' webpage.
+                            Once the 'Add user' button is clicked, the webcam will open and capture 30 images for the user, 
+                            so that the face recognition model can be trained.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--second-->
+
+            <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                <div class="timeline__event__icon">
+                    <!-- <i class="lni-sport"></i>-->
+
+                </div>
+                <div class="timeline__event__date">
+                    Step : 2
+                </div>
+                <div class="timeline__event__content">
+                    <div class="timeline__event__title">
+                        Data entry into the Database
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>The data (Name and MIS) is keyed in to our MySQL database and the images of the user
+                            captured through the webcam are saved into a local directory of the operating device.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--third-->
+
+            <div class="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+                <div class="timeline__event__icon">
+                    <!-- <i class="lni-sport"></i>-->
+
+                </div>
+                <div class="timeline__event__date">
+                    Step : 3
+                </div>
+                <div class="timeline__event__content">
+                    <div class="timeline__event__title">
+                        Mark Attendance using Face recognition
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>Go to the Attendance webpage and click on 'Attendance' button. 
+                            The webcam opens and captures frames from the live video. These frames are then used
+                            to extract faces by identifying the face points. These faces are then recognised by our face recognition model
+                            to mark the attendance. 
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--forth-->
+
+            <div class="timeline__event animated fadeInUp timeline__event--type1">
+                <div class="timeline__event__icon">
+                    <!-- <i class="lni-sport"></i>-->
+
+                </div>
+                <div class="timeline__event__date">
+                    Step : 4
+                </div>
+                <div class="timeline__event__content">
+                    <div class="timeline__event__title">
+                        Attendance Verification using Geolocation of the user.
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>The user then scans the QR code displayed on the screen to fill a google form (while keeping 
+                            his mobile phone's location on). This location in the form of latitudes and longitudes is then compared against
+                            the latitudes and longitudes of the specific building in which the lecture is taking place.  
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--first-->
+            <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+                <div class="timeline__event__icon ">
+                    <!-- <i class="lni-sport"></i>-->
+
+                </div>
+                <div class="timeline__event__date">
+                    Step : 5
+                </div>
+                <div class="timeline__event__content ">
+                    <div class="timeline__event__title">
+                            Recording Attendance into the Database
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>If the location matches correctly and the face for the same user is identified, then the 
+                            Attendance count in the MySQL table is incremented for the respective user. Also, the total lectures 
+                            count is incremented in the Table.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--second-->
+
+            <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                <div class="timeline__event__icon">
+                    <!-- <i class="lni-sport"></i>-->
+
+                </div>
+                <div class="timeline__event__date">
+                    Step : 6
+                </div>
+                <div class="timeline__event__content">
+                    <div class="timeline__event__title">
+                        Calculation and display of Attendance percentage.
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>The Attendance percentage for all users is calculated by the formula:
+                            (Lectures attended by user/ Total count of lectures)*100 . This Attendance percentage can be 
+                            checked by the user by entering his/her MIS in the check attendance webpage. This data manipulation 
+                            is carried out with the help of Javascript. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--third-->
+
+            <!-- <div class="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+                <div class="timeline__event__icon">
+                 
+
+                </div>
+                <div class="timeline__event__date">
+                    October 1992
+                </div>
+                <div class="timeline__event__content">
+                    <div class="timeline__event__title">
+                        Super Mario Land: 6 Golden Coins
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab
+                            asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut
+                            architecto harum quidem dolorem in!</p>
+                    </div>
+
+                </div>
+            </div> -->
+
+            <!--forth-->
+
+            <!-- <div class="timeline__event animated fadeInUp timeline__event--type1">
+                <div class="timeline__event__icon">
+                    
+
+                </div>
+                <div class="timeline__event__date">
+                    August 1995
+                </div>
+                <div class="timeline__event__content">
+                    <div class="timeline__event__title">
+                        Super Mario World 2: Yoshi's Island
+                    </div>
+                    <div class="timeline__event__description">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab
+                            asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut
+                            architecto harum quidem dolorem in!</p>
+                    </div>
+                </div>
+            </div> -->
+
+            
+
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/6fc46b33e7.js" crossorigin="anonymous"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js'></script>
+	<script src="./js/play.js"></script>
+	<script src="./js/highlights.js"></script>
+	<script src="https://kit.fontawesome.com/6fc46b33e7.js" crossorigin="anonymous"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+	<script>
+		VANTA.WAVES({
+			el: "#my-background",
+			mouseControls: true,
+			touchControls: true,
+			gyroControls: false,
+			minHeight: 200.00,
+			minWidth: 200.00,
+			scale: 1.00,
+			scaleMobile: 1.00
+		})
+	</script>
+</body>
+
+</html>

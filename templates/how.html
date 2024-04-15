@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .mb-20 {
+      margin-bottom: 20px;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .font-large {
+      font-size: 1.5rem;
+    }
+
+    .title-font {
+      font-weight: bold;
+    }
+
+    .text-gray-900 {
+      color: #333;
+    }
+
+    .titsponsorhead {
+      font-size: 2rem;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+    }
+
+    .vertical-timeline {
+      width: 90%;
+      margin: auto;
+    }
+
+    .vertical-timeline-element {
+      position: relative;
+      padding: 20px;
+      margin: 0 auto 20px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: saturate(180%) blur(10px);
+      color: white;
+      border-radius: 10px;
+    }
+
+    .vertical-timeline-element::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .vertical-timeline-element-date {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .time-content {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+    <h1 class="font-large title-font mb-2 text-gray-900 titsponsorhead" style="margin-top:4rem;margin-bottom:0;">
+      TIMELINE
+    </h1>
+  </div>
+  <div class="timer">
+    <div class="vertical-timeline">
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-06-2023</p>
+        <h3 class="vertical-timeline-element-title" style="font-size:25px;">12:00 am</h3>
+        <p class="time-content" style="font-size:20px;">Registrations start</p>
+      </div>
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-21-2023</p>
+        <p class="time-content" style="font-size:20px;">Problem Statements will be released at 7:00 pm.</p>
+      </div>
+      <div class="vertical-timeline-element" data-aos="fade-up">
+        <p class="vertical-timeline-element-date">March-23-2023</p>
+        <p class="time-content" style="font-size:20px;">Application Deadline has been extended till 12:00 am 23rd March 2023.</p>
+        <p class="time-content" style="font-size:20px;">Deadline for submission of pitch deck : 7:00 pm</p>
+      </div>
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-24-2023</p>
+        <h3 class="vertical-timeline-element-title" style="font-size:25px;">9:00 am</h3>
+        <p class="time-content" style="font-size:20px;">Opening Ceremony and announcement of shortlisted teams</p>
+      </div>
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-24-2023</p>
+        <h3 class="vertical-timeline-element-title" style="font-size:25px;">10:00 am</h3>
+        <p class="time-content" style="font-size:20px;">Coding starts</p>
+      </div>
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-25-2023</p>
+        <h3 class="vertical-timeline-element-title" style="font-size:25px;">11:30 am</h3>
+        <p class="time-content" style="font-size:20px;">Final Submission of project</p>
+      </div>
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-25-2023</p>
+        <h3 class="vertical-timeline-element-title" style="font-size:25px;">12:00 pm</h3>
+        <p class="time-content" style="font-size:20px;">Judging Round begins</p>
+      </div>
+      <div class="vertical-timeline-element">
+        <p class="vertical-timeline-element-date">March-27-2023</p>
+        <h3 class="vertical-timeline-element-title" style="font-size:25px;">6:30 pm</h3>
+        <p class="time-content" style="font-size:20px;">Closing Ceremony and Winner Declaration</p>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

@@ -149,8 +149,8 @@
     <!-- navbar starts -->
     <nav>
         <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen'></i>
-            <span class="logo navLogo"><a href="#">Attendance System</a></span>
+            <!-- <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Attendance System</a></span> -->
 
             <div class="menu">
                 <div class="logo-toggle">
@@ -160,13 +160,14 @@
 
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">How it Works</a></li>
+                    <li><a href="/how_it_works_page">How it Works</a></li>
                     <li><a href="/attendance_page">Take Attendance</a></li>
                     <li><a href="/newuser_page">Add New User</a></li>
                     <li><a href="/qr_page">Scan QR</a></li>
+					<li><a href="/check_percentage">Check Attendance</a></li>
                 </ul>
             </div>
-        </div>
+		</div>
     </nav>
 
     <!-- navbar ends -->
@@ -188,7 +189,7 @@
                 </p>
             </div>
             <center>
-                <button class="button-71" role="button">Close Attendance</button>
+                <a href="/qr_attendance"><button type="submit" class="button-71" role="button">Close Attendance</button></a>
             </center>
         </div>
     </div>

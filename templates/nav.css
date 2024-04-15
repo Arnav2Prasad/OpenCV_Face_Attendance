@@ -59,7 +59,7 @@
      padding: 0 30px;
      display: flex;
      align-items: center;
-     justify-content: space-between;
+     justify-content: center;
  }
 
  nav .nav-bar .sidebarOpen {

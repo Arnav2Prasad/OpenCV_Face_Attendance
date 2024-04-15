@@ -27,7 +27,7 @@
             },
         };
     </script>
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
     <style type='text/css'>
         html {
             height: 100%;
@@ -218,8 +218,8 @@
     <!-- navbar starts -->
     <nav>
         <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen'></i>
-            <span class="logo navLogo"><a href="#">Attendance System</a></span>
+            <!-- <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Attendance System</a></span> -->
 
             <div class="menu">
                 <div class="logo-toggle">
@@ -228,11 +228,12 @@
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('new_home') }}">Home</a></li>
-                    <li><a href="#">How it Works</a></li>
-                    <li><a href="{{ url_for('attendance') }}">Take Attendance</a></li>
-                    <li><a href="{{ url_for('newuser') }}">Add New User</a></li>
-                    <li><a href="#">Scan QR</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/how_it_works_page">How it Works</a></li>
+                    <li><a href="/attendance_page">Take Attendance</a></li>
+                    <li><a href="/newuser_page">Add New User</a></li>
+                    <li><a href="/qr_page">Scan QR</a></li>
+					<li><a href="/check_percentage">Check Attendance</a></li>
                 </ul>
             </div>
 		</div>
@@ -242,22 +243,19 @@
 
     <div class="login-box">
         <h2>ADD NEW USER</h2>
-        <form action="/add">
+        <form action="/newuser" method="POST" enctype="multipart/form-data">
             <div class="user-box">
-                <input type="text" name="" required="">
+                <input type="text" id="username" name="username" required>
                 <label>NAME</label>
             </div>
             <div class="user-box">
-                <input type="password" name="" required="">
+                <input type="number" id="userid" name="userid" required>
                 <label>MIS</label>
             </div>
-            <a href="/add">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Add User
+            <a href="/newuser">
+                <button type="submit">Add User</button>
             </a>
+            <!-- <button type="submit">Add User</button> -->
         </form>
     </div>
 

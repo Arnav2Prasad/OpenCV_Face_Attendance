@@ -27,7 +27,7 @@
             },
         };
     </script>
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
     <style>
         * {
             padding: 0;
@@ -366,8 +366,8 @@
     <!-- navbar starts -->
     <nav>
         <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen'></i>
-            <span class="logo navLogo"><a href="#">Attendance System</a></span>
+            <!-- <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Attendance System</a></span> -->
 
             <div class="menu">
                 <div class="logo-toggle">
@@ -376,11 +376,12 @@
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('new_home') }}">Home</a></li>
-                    <li><a href="#">How it Works</a></li>
-                    <li><a href="{{ url_for('attendance') }}">Take Attendance</a></li>
-                    <li><a href="{{ url_for('newuser') }}">Add New User</a></li>
-                    <li><a href="#">Scan QR</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/how_it_works_page">How it Works</a></li>
+                    <li><a href="/attendance_page">Take Attendance</a></li>
+                    <li><a href="/newuser_page">Add New User</a></li>
+                    <li><a href="/qr_page">Scan QR</a></li>
+					<li><a href="/check_percentage">Check Attendance</a></li>
                 </ul>
             </div>
 		</div>
@@ -429,7 +430,7 @@
 
         </table>
         <div class="container">
-            <div class="btn"><a href="/start">Take Attendance</a></div>
+            <div class="btn"><a href="/attendance"><button type="submit"> Attendance</button></a></div>
         </div>
 
     </div>
